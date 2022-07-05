@@ -17,33 +17,46 @@ class UserController extends Controller
         return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
-    public function actionCreate()
+//    public function actionCreate()
+//    {
+//        return $this->actionCreateUpdate(null);
+//        /*
+//        $model = new User();
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect('/user/index');
+//        }
+//        return $this->render('create', ['model' => $model]);*/
+//    }
+
+//    public function actionUpdate($id)
+//    {
+//        return $this->actionCreateUpdate($id);
+//        /*$model = User::findOne($id);
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect('/user/index');
+//        }
+//        return  $this->render('create', ['model' => $model]);*/
+//    }
+    public function actionCreateUpdate($id = null)
     {
-        $model = new User();
-        if($post = Yii::$app->request->post())
-        {
-            if($model->load($post) && $model->save())
-            {
-                return $this->redirect('/user/index');
-            }
+        $model = is_null($id) ? new User() : User::findOne($id);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('/user/index');
         }
         return  $this->render('create', ['model' => $model]);
     }
 
-    public function actionUpdate(): string
+    public function actionView($id): string
     {
-        //$model = User::
-        return  $this->render('update');
+        $model = User::findOne($id);
+        return  $this->render('view', ['model' => $model]);
     }
 
-    public function actionView(): string
+    public function actionDelete($id)
     {
-        return  $this->render('view');
-    }
-
-    public function actionDelete()
-    {
-        return  $this->redirect('/index');
+        $user = User::findOne($id);
+        $user->delete();
+        return  $this->redirect('/user/index');
     }
 
 }

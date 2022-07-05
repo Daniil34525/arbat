@@ -2,7 +2,9 @@
 
 namespace app\models;
 
+use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * @property integer $id
@@ -19,6 +21,17 @@ class User extends ActiveRecord
     public static function tableName()
     {
         return 'user';
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+            ],
+        ];
     }
 
     public function rules()
