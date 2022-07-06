@@ -1,6 +1,7 @@
 <?php
 
 /** @var yii\web\View $this */
+
 /** @var string $content */
 
 use app\assets\AppAsset;
@@ -35,12 +36,22 @@ AppAsset::register($this);
         ],
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/user/index']],
-            ['label' => 'Create', 'url' => ['/user/create-update']],
-        ],
-    ]);
+            'options' => ['class' => 'navbar-nav'],
+            'items' => [
+                ['label' => 'Все книги', 'url' => ['/book/index']],
+                ['label' => 'Добавить книгу', 'url' => ['/book/create-update']],
+                [
+                    'label' => 'Список',
+                    'items' => [
+                        ['label' => 'Все пользователи', 'url' => ['/user/index']],
+                        ['label' => 'Создать пользователя', 'url' => ['/user/create-update']],
+                        ['label' => 'Все книги', 'url' => ['/book/index']],
+                        ['label' => 'Создать книгу', 'url' => ['/book/create-update']],
+                    ],
+                ],
+            ]
+        ]
+    );
     NavBar::end();
     ?>
 </header>

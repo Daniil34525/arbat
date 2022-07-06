@@ -13,7 +13,7 @@ echo DetailView::widget([
         'id',
         'name',
         'surname',
-        'password',
+        //'password',
         'phone',
         'email',
         'created_at:datetime',
