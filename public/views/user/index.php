@@ -2,6 +2,7 @@
 
 use app\models\User;
 use app\models\UserSearch;
+use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
@@ -20,11 +21,56 @@ echo GridView::widget([
         'id',
         'name',
         'surname',
-        'password',
-        'phone',
+//        [
+//            'attribute' => 'password',
+//            'value' => 'password',
+//            'contentOptions' => [
+//                'style' => 'width: 0%; white-space: normal;',
+//            ]
+//        ],
+        [
+            'attribute' => 'phone',
+            'format' => 'raw',
+            'value' => function($model, $id){
+                return Html::tag('span', $model->phone, ['class' => 'badge badge-primary']);
+            },
+            'contentOptions' => [
+                'style' => 'width: 10%',
+            ]
+        ],
         'email',
-        'created_at:datetime',
-        'updated_at:datetime',
+        [
+            'attribute' => 'created_at',
+            'format' => 'date',
+            'value' => 'created_at',
+            'filter' => DatePicker::widget([
+                'model' => $searchModel,
+                'attribute' => 'created_at',
+                'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'dd-MM-yyyy'
+                ],
+                'convertFormat' => true,
+            ])
+        ],
+//        'created_at:datetime',
+        [
+            'attribute' => 'updated_at',
+            'format' => 'date',
+            'value' => 'updated_at',
+            'filter' => DatePicker::widget([
+                'model' => $searchModel,
+                'attribute' => 'updated_at',
+                'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                'pluginOptions' => [
+                    'auroclose' => true,
+                    'format' => 'dd-MM-yyyy'
+                ],
+                'convertFormat' => true,
+            ])
+        ],
+//        'updated_at:datetime',
         [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{view} {update} {delete}',

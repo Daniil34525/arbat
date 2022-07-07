@@ -20,27 +20,6 @@ class UserController extends Controller
                 'searchModel' => $searchModel
             ]);
     }
-
-//    public function actionCreate()
-//    {
-//        return $this->actionCreateUpdate(null);
-//        /*
-//        $model = new User();
-//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect('/user/index');
-//        }
-//        return $this->render('create', ['model' => $model]);*/
-//    }
-
-//    public function actionUpdate($id)
-//    {
-//        return $this->actionCreateUpdate($id);
-//        /*$model = User::findOne($id);
-//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect('/user/index');
-//        }
-//        return  $this->render('create', ['model' => $model]);*/
-//    }
     public function actionCreateUpdate($id = null)
     {
         $model = is_null($id) ? new User() : User::findOne($id);

@@ -88,6 +88,8 @@
       <excludeFolder url="file://$MODULE_DIR$/public/vendor/sebastian/global-state" />
       <excludeFolder url="file://$MODULE_DIR$/public/vendor/sebastian/environment" />
       <excludeFolder url="file://$MODULE_DIR$/public/vendor/sebastian/comparator" />
+      <excludeFolder url="file://$MODULE_DIR$/public/vendor/kartik-v/yii2-widget-datepicker" />
+      <excludeFolder url="file://$MODULE_DIR$/public/vendor/kartik-v/yii2-krajee-base" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
