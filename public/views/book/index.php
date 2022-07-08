@@ -12,34 +12,47 @@ use yii\grid\GridView;
  * @var BookSearch $searchModel
  */
 
-echo GridView::widget([
-    'dataProvider' => $dataProvider,
-    'filterModel' => $searchModel,
-    'columns' => [
-        'id',
-        'title',
-        'author',
-        'count',
-        'about',
-//        'created_at:datetime',
-        [
-            'attribute' => ' created_at',
-            'format' => 'date',
-            'value' => 'created_at',
-            'filter' => DatePicker::widget([
-                ''
-            ])
-        ],
-        'updated_at:datetime',
-        [
-            'class' => 'yii\grid\ActionColumn',
-            'template' => '{view} {update} {delete}',
-            'buttons' => [
-                'update' => function($url, $model){
-                    return Html::a('редактировать', '/book/create-update?id=' . $model->id);
-                }
-            ]
-
-        ],
-    ]
-]);
+//echo GridView::widget([
+//    'dataProvider' => $dataProvider,
+//    'filterModel' => $searchModel,
+//    'columns' => [
+//        'id',
+//        'title',
+//        'author',
+//        'count',
+//        'about',
+////        'created_at:datetime',
+//        [
+//            'attribute' => ' created_at',
+//            'format' => 'date',
+//            'value' => 'created_at',
+//            'filter' => DatePicker::widget([
+//                ''
+//            ])
+//        ],
+//        'updated_at:datetime',
+//        [
+//            'class' => 'yii\grid\ActionColumn',
+//            'template' => '{view} {update} {delete}',
+//            'buttons' => [
+//                'update' => function($url, $model){
+//                    return Html::a('редактировать', '/book/create-update?id=' . $model->id);
+//                }
+//            ]
+//
+//        ],
+//    ]
+//]);
+$models = $dataProvider->models;
+?>
+<div class="row">
+    <?php foreach($models as $model){?>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><?= $model->title ?></h5>
+                <p class="card-text"> Описание: <?= $model->about ?></p>
+                <a href="/book/view?id=<?=$model->id?>" class="btn btn-primary">Подробнее</a>
+                <a href="/book/create-update?id=<?=$model->id?>" class="btn btn-success">Редактировать</a>
+            </div>
+        </div>
+    <?php }?>
