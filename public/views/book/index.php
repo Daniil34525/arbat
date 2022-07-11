@@ -2,6 +2,7 @@
 
 use app\models\BookSearch;
 use app\models\UserSearch;
+use app\widgets\BookListWidget;
 use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
@@ -44,15 +45,11 @@ use yii\grid\GridView;
 //    ]
 //]);
 $models = $dataProvider->models;
+    echo BookListWidget::widget([
+        'models' => $models,
+        'button' => [
+            'view' => 'primary',
+            'create' => 'success'
+        ]
+    ]);
 ?>
-<div class="row">
-    <?php foreach($models as $model){?>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title"><?= $model->title ?></h5>
-                <p class="card-text"> Описание: <?= $model->about ?></p>
-                <a href="/book/view?id=<?=$model->id?>" class="btn btn-primary">Подробнее</a>
-                <a href="/book/create-update?id=<?=$model->id?>" class="btn btn-success">Редактировать</a>
-            </div>
-        </div>
-    <?php }?>

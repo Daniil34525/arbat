@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
 /**
@@ -13,6 +14,9 @@ use yii\db\ActiveRecord;
  * @property integer $count
  * @property string $about
  * @property integer $data
+ * @property integer $user_id
+ *
+ * @property User $user
  */
 class Book extends ActiveRecord
 {
@@ -33,9 +37,9 @@ class Book extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'author', 'count', 'data'], 'required'],
+            [['title', 'author', 'count', 'data', 'user_id'], 'required'],
             [['title', 'author', 'about'], 'string'],
-            ['count', 'integer']
+            [['count', 'user_id'], 'integer']
         ];
     }
     public function attributeLabels()
@@ -47,6 +51,11 @@ class Book extends ActiveRecord
             'about' => 'Описание',
             'created_at' => 'Дата издания',
             'updated_at' => 'Дата изменения',
+            'user_id' => 'Пользователь'
         ];
+    }
+    public function getUser(): ActiveQuery
+    {
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 }

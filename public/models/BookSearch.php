@@ -14,11 +14,11 @@ class BookSearch extends Book
     }
     public function search($params)
     {
-        $query = self::find();
+        $query = self::find()->with('user');
         $dataProvider = new ActiveDataProvider([
            'query' => $query,
            'pagination' =>[
-               'pageSize' => 4
+               'pageSize' => 100
            ]
         ]);
         $this->load($params);
