@@ -18,5 +18,15 @@ echo DetailView::widget([
         'email',
         'created_at:datetime',
         'updated_at:datetime',
+        [
+            'attribute' => 'books',
+            'value' => function($model){
+                $books = [];
+                foreach ($model->book as $book){
+                    $books[] = $book->title;
+                }
+                return implode(', ', $books);
+            }
+        ],
     ]
 ]);

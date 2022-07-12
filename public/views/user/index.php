@@ -70,6 +70,17 @@ echo GridView::widget([
                 'convertFormat' => true,
             ])
         ],
+        [
+            'attribute' => 'book',
+            'value' => function($model)
+            {
+                $books = [];
+                foreach ($model->book as $book){
+                    $books[] = $book->title;
+                }
+                return implode(', ', $books);
+            }
+        ],
 //        'updated_at:datetime',
         [
             'class' => 'yii\grid\ActionColumn',

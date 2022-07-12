@@ -2,9 +2,7 @@
 
 namespace app\widgets;
 
-use app\models\Book;
 use yii\base\Widget;
-use yii\helpers\HTML;
 
 class BookListWidget extends Widget
 {
@@ -28,25 +26,7 @@ class BookListWidget extends Widget
 
 
     public function run()
-    {?>
-    <div class="row">
-        <?php
-        /** @var Book $model */
-        foreach($this->models as $model){?>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $model->title ?></h5>
-                    <p class="card-text"> Описание: <?= $model->about ?></p>
-                    <p>Добавил: <?= isset($model->user) ? $model->user->name : '-' ?></p>
-
-                    <a href="/book/view?id=<?=$model->id?>" class="btn
-                    <?=$this->btnTypes[$this->button['view']]  ?>">Подробнее</a>
-
-                    <a href="/book/create-update?id=<?=$model->id?>" class="btn
-                    <?=$this->btnTypes[$this->button['create']]  ?>">Редактировать</a>
-                </div>
-            </div>
-        <?php }?>
-    </div>
-    <?php }
+    {
+        return $this->render('book_list' , ['models' => $this->models, 'btnTypes' => $this->btnTypes, 'button' => $this->button]);
+    }
 }

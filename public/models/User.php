@@ -17,6 +17,8 @@ use yii\helpers\ArrayHelper;
  * @property string $email
  * @property integer $created_at
  * @property integer $updated_at
+ *
+ * @property Book $book;
  */
 class User extends ActiveRecord
 {
@@ -63,6 +65,7 @@ class User extends ActiveRecord
             'email' => 'Почта',
             'created_at' => 'Дата создания',
             'updated_at' => 'Дата изменения',
+            'books' => 'Добавленные книги'
         ];
     }
 
@@ -86,5 +89,10 @@ class User extends ActiveRecord
             $res[$user['id']] = $user['name'];
         }
         return $res;
+    }
+
+    public function getBook()
+    {
+        return $this->hasMany(Book::class, ['user_id' => 'id']);
     }
 }

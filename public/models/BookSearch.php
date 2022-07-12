@@ -9,7 +9,7 @@ class BookSearch extends Book
     public function rules()
     {
         return[
-            [['id', 'title', 'author', 'count', 'created_at', 'updated_at', 'about'],'safe'],
+            [['id', 'title', 'author', 'count', 'created_at', 'updated_at', 'about', 'user_id'],'safe'],
         ];
     }
     public function search($params)
@@ -29,6 +29,7 @@ class BookSearch extends Book
         $query->andFilterWhere(['like', 'author', $this->author]);
         $query->andFilterWhere(['like', 'count', $this->count]);
         $query->andFilterWhere(['like', 'about', $this->about]);
+        $query->andFilterWhere(['like', 'user_id', $this->user_id]);
 
 
         return $dataProvider;

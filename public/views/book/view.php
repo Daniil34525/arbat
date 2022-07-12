@@ -6,6 +6,8 @@ use yii\widgets\DetailView;
 /**
  * @var Book $model
  */
+
+
 echo DetailView::widget([
     'model' => $model,
     'attributes' => [
@@ -15,6 +17,10 @@ echo DetailView::widget([
         'count',
         'about',
         'created_at:datetime',
-        'updated_at:datetime'
+        'updated_at:datetime',
+        [
+            'attribute' => 'name',
+            'value' => $model->user->name
+        ],
     ]
 ]);

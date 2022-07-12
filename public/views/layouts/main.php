@@ -38,13 +38,16 @@ AppAsset::register($this);
     echo Nav::widget([
             'options' => ['class' => 'navbar-nav'],
             'items' => [
-                ['label' => 'Все книги', 'url' => ['/book/index']],
-                ['label' => 'Добавить книгу', 'url' => ['/book/create-update']],
                 [
-                    'label' => 'Список',
+                    'label' => 'Пользователи',
                     'items' => [
                         ['label' => 'Все пользователи', 'url' => ['/user/index']],
                         ['label' => 'Создать пользователя', 'url' => ['/user/create-update']],
+                    ],
+                ],
+                [
+                    'label' => 'Книги',
+                    'items' => [
                         ['label' => 'Все книги', 'url' => ['/book/index']],
                         ['label' => 'Создать книгу', 'url' => ['/book/create-update']],
                     ],

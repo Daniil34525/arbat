@@ -15,6 +15,7 @@ use yii\db\ActiveRecord;
  * @property string $about
  * @property integer $data
  * @property integer $user_id
+ * @property string $name
  *
  * @property User $user
  */
@@ -51,7 +52,7 @@ class Book extends ActiveRecord
             'about' => 'Описание',
             'created_at' => 'Дата издания',
             'updated_at' => 'Дата изменения',
-            'user_id' => 'Пользователь'
+            'name' => 'Пользователь'
         ];
     }
     public function getUser(): ActiveQuery
