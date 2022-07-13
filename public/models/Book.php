@@ -52,7 +52,7 @@ class Book extends ActiveRecord
             'about' => 'Описание',
             'created_at' => 'Дата издания',
             'updated_at' => 'Дата изменения',
-            'name' => 'Пользователь'
+            'user_id', 'name' => 'Пользователь',
         ];
     }
     public function getUser(): ActiveQuery

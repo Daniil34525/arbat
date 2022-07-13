@@ -65,7 +65,8 @@ class User extends ActiveRecord
             'email' => 'Почта',
             'created_at' => 'Дата создания',
             'updated_at' => 'Дата изменения',
-            'books' => 'Добавленные книги'
+            'books' => 'Добавленные книги',
+
         ];
     }
 

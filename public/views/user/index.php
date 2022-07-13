@@ -8,12 +8,13 @@ use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\grid\ActionColumn;
+use yii\widgets\Pjax;
 
 /**
  * @var ActiveDataProvider $dataProvider
  * @var UserSearch $searchModel
  */
-
+Pjax::begin(['timeout' => 10000]);
 echo GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
@@ -21,13 +22,6 @@ echo GridView::widget([
         'id',
         'name',
         'surname',
-//        [
-//            'attribute' => 'password',
-//            'value' => 'password',
-//            'contentOptions' => [
-//                'style' => 'width: 0%; white-space: normal;',
-//            ]
-//        ],
         [
             'attribute' => 'phone',
             'format' => 'raw',
@@ -54,7 +48,6 @@ echo GridView::widget([
                 'convertFormat' => true,
             ])
         ],
-//        'created_at:datetime',
         [
             'attribute' => 'updated_at',
             'format' => 'date',
@@ -71,17 +64,29 @@ echo GridView::widget([
             ])
         ],
         [
-            'attribute' => 'book',
+            'attribute' => 'bookTitle',
             'value' => function($model)
             {
                 $books = [];
                 foreach ($model->book as $book){
-                    $books[] = $book->title;
+                    $books[] = Html::a($book->title, Url::to(['/book/view', 'id' => $book->id]), ['class' => 'btn btn-success' ,'target'=>'_blank']);
                 }
-                return implode(', ', $books);
+                return implode(' ', $books);
+            },
+            'format' => 'raw',
+        ],
+        [
+            'attribute' => 'bookAuthor',
+            'value' => function($model)
+            {
+                $authors = [];
+                foreach($model->book as $book)
+                {
+                    $authors[] = $book->author;
+                }
+                return implode($authors);
             }
         ],
-//        'updated_at:datetime',
         [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{view} {update} {delete}',
@@ -94,3 +99,4 @@ echo GridView::widget([
         ],
     ]
 ]);
+Pjax::end();

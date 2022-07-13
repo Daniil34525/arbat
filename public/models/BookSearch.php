@@ -31,7 +31,6 @@ class BookSearch extends Book
         $query->andFilterWhere(['like', 'about', $this->about]);
         $query->andFilterWhere(['like', 'user_id', $this->user_id]);
 
-
         return $dataProvider;
     }
 }

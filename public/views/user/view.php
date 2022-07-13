@@ -23,10 +23,11 @@ echo DetailView::widget([
             'value' => function($model){
                 $books = [];
                 foreach ($model->book as $book){
-                    $books[] = $book->title;
+                    $books[] = \yii\helpers\Html::a($book->title, \yii\helpers\Url::to(['/book/view', 'id' => $book->id]), ['class' => 'btn btn-success']);
                 }
-                return implode(', ', $books);
-            }
+                return implode(' ', $books);
+            },
+            'format' => 'raw'
         ],
     ]
 ]);
