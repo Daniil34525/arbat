@@ -52,6 +52,7 @@ AppAsset::register($this);
                         ['label' => 'Создать книгу', 'url' => ['/book/create-update']],
                     ],
                 ],
+                ['label' => 'Сообщения', 'url' => ['/message/index']],
             ]
         ]
     );

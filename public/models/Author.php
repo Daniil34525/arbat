@@ -11,7 +11,6 @@ use yii\db\ActiveRecord;
  * @property integer $age
  * @property string $email
  * @property string $password
- * @property integer $bookCount
  */
 
 class Author extends ActiveRecord
@@ -37,7 +36,7 @@ class Author extends ActiveRecord
             'name' => 'ФИО',
             'age' => 'Возраст',
             'password' => 'Пароль',
-            'bookCount' => 'Колличество выпущенных книг',
+            'bookCount' => 'Колличество написанных книг',
         ];
     }
 

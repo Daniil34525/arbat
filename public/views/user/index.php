@@ -1,13 +1,11 @@
 <?php
 
-use app\models\User;
 use app\models\UserSearch;
 use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
-use yii\grid\ActionColumn;
 use yii\widgets\Pjax;
 
 /**
