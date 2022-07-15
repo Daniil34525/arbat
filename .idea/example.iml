@@ -90,6 +90,11 @@
       <excludeFolder url="file://$MODULE_DIR$/public/vendor/sebastian/comparator" />
       <excludeFolder url="file://$MODULE_DIR$/public/vendor/kartik-v/yii2-widget-datepicker" />
       <excludeFolder url="file://$MODULE_DIR$/public/vendor/kartik-v/yii2-krajee-base" />
+      <excludeFolder url="file://$MODULE_DIR$/public/vendor/hail812/yii2-adminlte3" />
+      <excludeFolder url="file://$MODULE_DIR$/public/vendor/hail812/yii2-adminlte-widgets" />
+      <excludeFolder url="file://$MODULE_DIR$/public/vendor/almasaeed2010/adminlte" />
+      <excludeFolder url="file://$MODULE_DIR$/public/vendor/select2/select2" />
+      <excludeFolder url="file://$MODULE_DIR$/public/vendor/kartik-v/yii2-widget-select2" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

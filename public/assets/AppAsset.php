@@ -7,6 +7,7 @@
 
 namespace app\assets;
 
+use hail812\adminlte3\assets\AdminLteAsset;
 use yii\web\AssetBundle;
 
 /**
@@ -28,5 +29,6 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
+        AdminLteAsset::class,
     ];
 }

@@ -6,12 +6,15 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
+use yii\web\View;
 use yii\widgets\Pjax;
 
 /**
  * @var ActiveDataProvider $dataProvider
  * @var UserSearch $searchModel
+ * @var View $this
  */
+
 Pjax::begin(['timeout' => 10000]);
 echo GridView::widget([
     'dataProvider' => $dataProvider,

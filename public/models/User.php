@@ -22,6 +22,9 @@ use yii\helpers\ArrayHelper;
  */
 class User extends ActiveRecord
 {
+
+    const ADMIN_ID = 1;
+
     public static function tableName()
     {
         return 'user';
@@ -96,4 +99,5 @@ class User extends ActiveRecord
     {
         return $this->hasMany(Book::class, ['user_id' => 'id']);
     }
+
 }

@@ -3,13 +3,13 @@
 namespace app\controllers;
 
 use app\models\Message;
+use app\models\User;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Controller;
 
 class MessageController extends Controller
 {
-    const ADMIN_ID = 2;
     public function actionIndex(int $id = null)
     {
         $isAdmin = false;
@@ -17,7 +17,7 @@ class MessageController extends Controller
         if(is_null($id))
         {
             $isAdmin = true;
-            $id = self::ADMIN_ID;
+            $id = User::ADMIN_ID;
             $messages = Message::find()->with(['userTo', 'userFrom'])->all();
         } else {
             $messages = Message::find()
@@ -25,7 +25,7 @@ class MessageController extends Controller
                 ->orWhere(['user_id_from' => $id])
                 ->with(['userTo', 'userFrom'])
                 ->all();
-            $newMessage->user_id_from = self::ADMIN_ID;
+            $newMessage->user_id_from = User::ADMIN_ID;
         }
         $newMessage->user_id_to = $id;
 

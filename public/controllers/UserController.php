@@ -6,7 +6,10 @@ use app\models\User;
 use app\models\UserSearch;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\db\Query;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
+use yii\web\Response;
 
 class UserController extends Controller
 {
@@ -45,4 +48,20 @@ class UserController extends Controller
         return  $this->redirect('/user/index');
     }
 
+    public function actionUserList($q = null)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $out = ['results' => ['id' => '', 'text' => '']];
+        if (!is_null($q)) {
+            $query = new Query;
+            $query->select('id, name AS text')
+                ->from('user')
+                ->where(['like', 'name', $q])
+                ->limit(20);
+            $command = $query->createCommand();
+            $data = $command->queryAll();
+            $out['results'] = array_values($data);
+        }
+        return $out;
+    }
 }
